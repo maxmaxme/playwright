@@ -583,7 +583,7 @@ export class InjectedScript {
     const element = this.retarget(node, 'follow-label');
     if (!element)
       return 'error:notconnected';
-    if (element.nodeName.toLowerCase() !== 'select')
+    if (getAriaRole(element) !== 'combobox')
       throw this.createStacklessError('Element is not a <select> element');
     const select = element as HTMLSelectElement;
     const options = [...select.options];
